@@ -7,13 +7,14 @@ const io = new Server(httpServer);
 
 const main = async () => {
   io.on('connection', async (socket) => {
-    printInfo({ title: 'Connected with', message: socket.id});
-    socket.on('cm', (args, callback) => {
+    printInfo({title: 'Connected with', message: socket.id});
+    socket.on('cm', (args) => {
       socket.broadcast.emit(args.c, args);
     });
   });
+
   httpServer.listen(3000);
-  printInfo({ title: 'Server', message: 'Ready'});
+  printInfo({title: 'Server', message: 'Ready'});
 }
 
 main();

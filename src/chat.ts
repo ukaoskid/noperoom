@@ -33,7 +33,13 @@ export const chat = async (server: any, channel: string, nickname: string) => {
   });
 
   rl.on('line', (input: string) => {
-    const data = {t: Date.now(), m: input, c: channel, n: nickname};
+    const data = {
+      t: Date.now(),
+      m: input,
+      c: channel,
+      n: nickname
+    };
+
     clearLastLine();
     printChat(data);
     server.emit('cm', data);
