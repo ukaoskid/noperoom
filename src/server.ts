@@ -1,9 +1,11 @@
-import { createServer as createServerHttp } from 'http';
-import { createServer as createServerHttps } from 'https';
 import { Server } from 'socket.io';
 import { printInfo } from './chat';
 
-const httpServer = process.env.PROD ? createServerHttps() : createServerHttp();
+const express = require('express');
+const app = express();
+const http = require('http');
+
+const httpServer = http.createServer(app);
 const io = new Server(httpServer);
 
 const main = async () => {
@@ -14,8 +16,13 @@ const main = async () => {
     });
   });
 
-  httpServer.listen(process.env.PORT || 3000);
-  printInfo({title: 'Server', message: 'Ready'});
+  app.get('/', (req, res) => {
+    res.send('<h1>Noperoom server is up</h1>');
+  });
+
+  httpServer.listen(process.env.PORT || 3000, () => {
+    printInfo({title: 'Server', message: 'Ready'});
+  });
 }
 
 main();
