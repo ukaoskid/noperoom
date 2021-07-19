@@ -38,12 +38,11 @@ const main = async () => {
     channel = channelNameAnswer.channel
   }
 
-  printInfo({title: 'Channel', message: channel});
-
   const server = io(`${answers.hostname}`);
 
   server.on('connect', async () => {
     printInfo({title: 'Server', message: 'Connected'});
+    printInfo({title: 'Channel', message: channel});
   });
 
   server.on(channel, (args, callback) => {

@@ -1,8 +1,9 @@
-import { createServer } from 'http';
+import { createServer as createServerHttp } from 'http';
+import { createServer as createServerHttps } from 'https';
 import { Server } from 'socket.io';
 import { printInfo } from './chat';
 
-const httpServer = createServer();
+const httpServer = process.env.PROD ? createServerHttps() : createServerHttp();
 const io = new Server(httpServer);
 
 const main = async () => {
