@@ -40,7 +40,7 @@ const main = async () => {
 
   printInfo({title: 'Channel', message: channel});
 
-  const server = io(`http://${answers.hostname}:3000`);
+  const server = io(`${answers.hostname}`);
 
   server.on('connect', async () => {
     printInfo({title: 'Server', message: 'Connected'});
