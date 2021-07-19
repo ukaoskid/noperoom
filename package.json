@@ -8,7 +8,7 @@
     "server:ts": "ts-node src/server.ts",
     "client:ts": "ts-node src/client.ts",
     "build": "tsc --build",
-    "start": "node build/server.js"
+    "start": "node build/src/server.js"
   },
   "author": "Simone Di Cicco",
   "license": "ISC",

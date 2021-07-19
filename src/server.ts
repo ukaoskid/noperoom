@@ -13,7 +13,7 @@ const main = async () => {
     });
   });
 
-  httpServer.listen(process.env.PORT);
+  httpServer.listen(process.env.PORT || 3000);
   printInfo({title: 'Server', message: 'Ready'});
 }
 
