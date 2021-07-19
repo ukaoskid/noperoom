@@ -6,7 +6,12 @@ const app = express();
 const http = require('http');
 
 const httpServer = http.createServer(app);
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 const main = async () => {
   io.on('connection', async (socket) => {

@@ -38,7 +38,7 @@ const main = async () => {
     channel = channelNameAnswer.channel
   }
 
-  const server = io(`${answers.hostname}`);
+  const server = io(`${answers.hostname}`, { secure: true });
 
   server.on('connect', async () => {
     printInfo({title: 'Server', message: 'Connected'});
